@@ -46,13 +46,13 @@ fi
 echo "Habilitando la API..."
 
 # Navegar al directorio del contenedor y verificar el estado del contenedor
-cd ~/Desktop/dev/proplayas4t/ || exit
+cd ~/proplayasAPI || exit
 echo "Iniciando el contenedor de Docker..."
 docker-compose up -d
 sleep 5  # Esperar unos segundos para permitir que los contenedores inicien
 
 # Verificar que el contenedor específico está en ejecución
-if ! docker ps | grep -q "proplayas4t"; then
+if ! docker ps | grep -q "proplayasapi"; then
   echo "El contenedor de Docker no se ha iniciado correctamente."
   exit 1
 else
@@ -61,23 +61,18 @@ fi
 
 # Liberar los puertos 8000 y el rango 3000-3010
 liberar_puertos 8000 8000
-liberar_puertos 3000 3005
-
-# Iniciar la aplicación de Symfony en segundo plano
-echo "Iniciando la aplicación de Symfony..."
-(symfony server:start &> symfony.log &)
-sleep 5
+liberar_puertos 5173 5174
 
 # Iniciar el frontend
 echo "Iniciando el frontend..."
 
 # Navegar a la ruta del frontend
-cd ~/Desktop/dev/proplayas/ || exit
+cd ~/Desktop/dev/vue-proplayas/ || exit
 
 # Ejecutar la aplicación con npm en segundo plano
-echo "Ejecutando el frontend con npm..."
-(npm run dev &> frontend.log &)
-sleep 5
+echo "Abriendo entorno de trabajo..."
+(code .)
+sleep 2
 
 # Verificar que todos los servicios están en ejecución
 echo "Verificando que todos los servicios estén en ejecución..."
@@ -87,22 +82,6 @@ if ps aux | grep -i "[d]ocker.app/Contents/MacOS/Docker Desktop" > /dev/null && 
   echo "Docker Desktop está en ejecución."
 else
   echo "Docker Desktop no está en ejecución."
-  exit 1
-fi
-
-# Verificar que Symfony está en el puerto 8000
-if lsof -i tcp:8000 | grep -q LISTEN; then
-  echo "La aplicación de Symfony está corriendo en el puerto 8000."
-else
-  echo "La aplicación de Symfony no está en el puerto 8000."
-  exit 1
-fi
-
-# Verificar que el frontend está en el puerto 3000
-if lsof -i tcp:3000 | grep -q LISTEN; then
-  echo "La aplicación del frontend está corriendo en el puerto 3000."
-else
-  echo "La aplicación del frontend no está en el puerto 3000."
   exit 1
 fi
 
