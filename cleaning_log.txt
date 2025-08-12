@@ -1,0 +1,32 @@
+🔧 Iniciando limpieza del sistema...
+🧹 Eliminando /Users/miguelalejandrearreola/Library/Application Support/Notion
+🧹 Eliminando /Users/miguelalejandrearreola/Library/Application Support/Postman
+🧹 Eliminando /Users/miguelalejandrearreola/Library/Application Support/BraveSoftware
+🧹 Eliminando /Users/miguelalejandrearreola/Library/Application Support/Spotify
+🧹 Limpiando cachés de usuario...
+rm: /Users/miguelalejandrearreola/Library/Caches/CloudKit: Operation not permitted
+rm: /Users/miguelalejandrearreola/Library/Caches/FamilyCircle: Operation not permitted
+rm: /Users/miguelalejandrearreola/Library/Caches/com.apple.HomeKit: Operation not permitted
+rm: /Users/miguelalejandrearreola/Library/Caches/com.apple.Safari: Operation not permitted
+rm: /Users/miguelalejandrearreola/Library/Caches/com.apple.ap.adprivacyd: Operation not permitted
+rm: /Users/miguelalejandrearreola/Library/Caches/com.apple.containermanagerd: Operation not permitted
+rm: /Users/miguelalejandrearreola/Library/Caches/com.apple.homed: Operation not permitted
+🧹 Limpiando logs de usuario...
+📱 Eliminando backup de iPhone en /Users/miguelalejandrearreola/Library/Application Support/MobileSync/Backup
+rm: /Users/miguelalejandrearreola/Library/Application Support/MobileSync/Backup: Operation not permitted
+💬 Eliminando datos de Slack
+rm: /Users/miguelalejandrearreola/Library/Containers/com.tinyspeck.slackmacgap/.com.apple.containermanagerd.metadata.plist: Operation not permitted
+rm: /Users/miguelalejandrearreola/Library/Containers/com.tinyspeck.slackmacgap/Data: Operation not permitted
+rm: /Users/miguelalejandrearreola/Library/Containers/com.tinyspeck.slackmacgap: Operation not permitted
+🧠 Reindexando Spotlight...
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+🧹 Limpiando archivos temporales...
+📦 Espacio libre después de limpieza:
+Filesystem        Size    Used   Avail Capacity iused ifree %iused  Mounted on
+/dev/disk3s1s1   228Gi    10Gi    87Gi    11%    412k  913M    0%   /
+⚠️  Acciones adicionales recomendadas (ejecutar manualmente con sudo si lo deseas):
+    sudo rm -rf /private/var/vm/*               # Eliminar archivos de swap
+    sudo mdutil -E /                             # Reindexar Spotlight
+    Revisa snapshots de APFS con: diskutil apfs list
+✅ Limpieza completada.
